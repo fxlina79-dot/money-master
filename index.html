@@ -247,8 +247,10 @@ section{position:relative;z-index:1}
 /* PARTNERS */
 #partners{padding:60px 5%;background:var(--dark2);border-top:1px solid rgba(46,204,91,.08)}
 .partners-track{display:flex;gap:40px;animation:scroll-x 20s linear infinite}
-.partner-logo{filter:grayscale(1) opacity(.5);transition:.3s;font-size:.9rem;font-weight:700;white-space:nowrap;color:var(--text2);padding:12px 24px;border:1px solid rgba(255,255,255,.08);border-radius:8px}
-.partner-logo:hover{filter:none;opacity:1;border-color:rgba(46,204,91,.3);color:var(--green)}
+.partner-logo{background:#fff;border-radius:12px;padding:14px 24px;min-width:130px;height:56px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;font-weight:800;font-size:1.05rem;letter-spacing:-.3px;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:.3s}
+.partner-logo:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.45)}
+.partner-logo .accent{display:inline-block}
+.pl-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px}
 @keyframes scroll-x{to{transform:translateX(-50%)}}
 .partners-overflow{overflow:hidden}
 .partners-row{display:flex;gap:40px;white-space:nowrap}
@@ -1030,18 +1032,18 @@ footer{background:#03130A;border-top:1px solid rgba(46,204,91,.1);padding:60px 5
   <div style="text-align:center;margin-bottom:28px;color:var(--text2);font-size:.85rem;letter-spacing:2px;text-transform:uppercase">ĐỐI TÁC UY TÍN</div>
   <div class="partners-overflow">
     <div class="partners-row" id="partners-track">
-      <span class="partner-logo">Vantage</span>
-      <span class="partner-logo">PUPRIME</span>
-      <span class="partner-logo">EC Markets</span>
-      <span class="partner-logo">CXM</span>
-      <span class="partner-logo">ISG</span>
-      <span class="partner-logo">TMGM</span>
-      <span class="partner-logo">Vantage</span>
-      <span class="partner-logo">PUPRIME</span>
-      <span class="partner-logo">EC Markets</span>
-      <span class="partner-logo">CXM</span>
-      <span class="partner-logo">ISG</span>
-      <span class="partner-logo">TMGM</span>
+      <span class="partner-logo"><span class="pl-dot" style="background:#16a34a"></span><span style="color:#1c2433">vantage</span></span>
+      <span class="partner-logo"><span style="color:#1d4ed8">PU</span><span style="color:#0b1f4d">PRIME</span></span>
+      <span class="partner-logo"><span style="color:#e11d2a">EC</span>&nbsp;<span style="color:#1c2433">markets</span></span>
+      <span class="partner-logo"><span style="color:#16a34a">CXM</span>&nbsp;<span style="color:#6b7280;font-size:.7rem;letter-spacing:1px">DIRECT</span></span>
+      <span class="partner-logo"><span style="color:#0b7a4b">IS</span><span style="color:#0b1f4d">G</span></span>
+      <span class="partner-logo"><span style="color:#0b1f4d">TM</span><span style="color:#e11d2a">GM</span></span>
+      <span class="partner-logo"><span class="pl-dot" style="background:#16a34a"></span><span style="color:#1c2433">vantage</span></span>
+      <span class="partner-logo"><span style="color:#1d4ed8">PU</span><span style="color:#0b1f4d">PRIME</span></span>
+      <span class="partner-logo"><span style="color:#e11d2a">EC</span>&nbsp;<span style="color:#1c2433">markets</span></span>
+      <span class="partner-logo"><span style="color:#16a34a">CXM</span>&nbsp;<span style="color:#6b7280;font-size:.7rem;letter-spacing:1px">DIRECT</span></span>
+      <span class="partner-logo"><span style="color:#0b7a4b">IS</span><span style="color:#0b1f4d">G</span></span>
+      <span class="partner-logo"><span style="color:#0b1f4d">TM</span><span style="color:#e11d2a">GM</span></span>
     </div>
   </div>
 </section>

@@ -46,6 +46,23 @@ header{position:sticky;top:16px;z-index:100;margin:16px auto 0;max-width:1320px;
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-weight:500;color:var(--text3);transition:.2s;font-size:.92rem;letter-spacing:.3px;position:relative}
 .nav-links a:hover{color:var(--blue3);text-shadow:0 0 8px var(--blue)}
+.has-dropdown{position:relative}
+.has-dropdown>a{display:inline-flex;align-items:center;gap:5px;cursor:pointer}
+.has-dropdown>a .caret{font-size:.7rem;transition:.3s}
+.has-dropdown:hover>a .caret{transform:rotate(180deg)}
+.dropdown{position:absolute;top:120%;left:50%;transform:translateX(-50%) translateY(8px);background:rgba(5,11,20,.96);backdrop-filter:blur(18px);border:1px solid rgba(59,130,246,.3);border-radius:18px;padding:8px;min-width:190px;opacity:0;visibility:hidden;transition:.25s;box-shadow:0 16px 40px rgba(0,0,0,.5);z-index:120}
+.has-dropdown:hover .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dropdown::before{content:'';position:absolute;top:-16px;left:0;right:0;height:16px}
+.dropdown a{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:12px;color:var(--text3)!important;font-size:.92rem;transition:.2s}
+.dropdown a:hover{background:rgba(59,130,246,.16);color:#fff!important}
+.dropdown a:hover::after{width:0}
+.dropdown a svg,.dropdown a .xm{flex-shrink:0}
+.mob-sub{display:flex;flex-direction:column}
+.mob-sub>.mob-head{display:flex;align-items:center;justify-content:space-between;color:var(--text3);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05);font-weight:500;cursor:pointer}
+.mob-sub .mob-items{display:none;flex-direction:column;padding-left:14px}
+.mob-sub.open .mob-items{display:flex}
+.mob-sub.open .mob-head .caret{transform:rotate(180deg)}
+.mob-sub .mob-items a{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9rem}
 .btn-glass{background:rgba(59,130,246,.2);border:1px solid var(--blue);padding:9px 22px;border-radius:40px;font-weight:600;color:var(--text);backdrop-filter:blur(4px);transition:.25s;display:inline-block;cursor:pointer}
 .btn-glass:hover{background:var(--blue);box-shadow:0 0 16px var(--blue);color:#fff;transform:scale(1.03)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
@@ -228,7 +245,22 @@ footer{background:#020617;margin-top:40px;padding:50px 0 30px;border-top:1px sol
       <li><a href="#daotao">Đào tạo live</a></li>
       <li><a href="#copytrade">Copytrade</a></li>
       <li><a href="#danhgia">Nhận xét</a></li>
-      <li><a href="#san">Sàn</a></li>
+      <li class="has-dropdown"><a href="#doitac">Đối tác <span class="caret">▾</span></a>
+        <div class="dropdown">
+          <a href="#doitac" data-broker="vantage" target="_self">
+            <svg viewBox="0 0 48 40" style="height:16px;width:auto"><path d="M5 5 L14 5 L24 28 L34 5 L43 5 L28 37 L20 37 Z" fill="#fff"/><path d="M16 5 L27 5 L21.5 17 Z" fill="#f0552a"/></svg>
+            Vantage
+          </a>
+          <a href="#doitac" data-broker="tickmill" target="_self">
+            <svg viewBox="0 0 44 44" style="height:16px;width:auto"><path d="M30 4 L14 4 L4 22 L14 40 L30 40 L23 28 L16 28 L11 22 L16 16 L23 16 Z" fill="#e3173e"/><path d="M26 14 L38 22 L26 30 L31 22 Z" fill="#22c55e"/></svg>
+            Tickmill
+          </a>
+          <a href="#doitac" data-broker="xm" target="_self">
+            <span class="xm" style="font-weight:900;font-size:1.05rem"><span style="color:#e2231a">X</span><span style="color:#fff">M</span></span>
+            <span>XM Global</span>
+          </a>
+        </div>
+      </li>
     </ul>
     <a href="https://zalo.me/0989994556" class="btn-glass">📱 Zalo Group</a>
     <button class="hamburger" id="hamburger" aria-label="menu"><span></span><span></span><span></span></button>
@@ -239,7 +271,14 @@ footer{background:#020617;margin-top:40px;padding:50px 0 30px;border-top:1px sol
     <a href="#daotao">Đào tạo live</a>
     <a href="#copytrade">Copytrade</a>
     <a href="#danhgia">Nhận xét</a>
-    <a href="#san">Sàn</a>
+    <div class="mob-sub" id="mobSub">
+      <div class="mob-head" id="mobSubHead">Đối tác <span class="caret">▾</span></div>
+      <div class="mob-items">
+        <a href="#doitac"><svg viewBox="0 0 48 40" style="height:15px;width:auto"><path d="M5 5 L14 5 L24 28 L34 5 L43 5 L28 37 L20 37 Z" fill="#fff"/><path d="M16 5 L27 5 L21.5 17 Z" fill="#f0552a"/></svg> Vantage</a>
+        <a href="#doitac"><svg viewBox="0 0 44 44" style="height:15px;width:auto"><path d="M30 4 L14 4 L4 22 L14 40 L30 40 L23 28 L16 28 L11 22 L16 16 L23 16 Z" fill="#e3173e"/><path d="M26 14 L38 22 L26 30 L31 22 Z" fill="#22c55e"/></svg> Tickmill</a>
+        <a href="#doitac"><span style="font-weight:900"><span style="color:#e2231a">X</span><span style="color:#fff">M</span></span> XM Global</a>
+      </div>
+    </div>
     <a href="#dangky">📩 Đăng ký tư vấn</a>
   </div>
 </header>
@@ -436,7 +475,7 @@ footer{background:#020617;margin-top:40px;padding:50px 0 30px;border-top:1px sol
 </section>
 
 <!-- SÀN IB -->
-<section id="san" class="section">
+<section id="doitac" class="section">
   <div class="container">
     <div class="section-title" data-aos="fade-up">🔗 Đối Tác Sàn – Link IB Độc Quyền</div>
     <div class="section-sub" data-aos="fade-up">Đăng ký qua Masterfx để nhận ưu đãi & support 24/7</div>
@@ -509,6 +548,9 @@ AOS.init({duration:800,easing:'ease-out-cubic',once:true,offset:60});
 const ham=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
 ham.addEventListener('click',()=>{ham.classList.toggle('open');mm.classList.toggle('open')});
 mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');mm.classList.remove('open')}));
+// Mobile "Đối tác" submenu toggle
+const mobSub=document.getElementById('mobSub'),mobHead=document.getElementById('mobSubHead');
+if(mobHead)mobHead.addEventListener('click',()=>mobSub.classList.toggle('open'));
 
 // Scroll-to-top
 window.addEventListener('scroll',()=>{document.getElementById('toTop').classList.toggle('show',scrollY>400)});

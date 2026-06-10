@@ -1443,9 +1443,9 @@ document.querySelectorAll('.benefit-card,.bonus-card,.testi-card').forEach(card=
   card.addEventListener('mouseleave',()=>{card.style.background=''});
 });
 
-// ===== FORM SUBMISSION (Lead + Review) =====
-// Email nhận thông tin khách hàng — THAY EMAIL CỦA CHỊ VÀO ĐÂY:
-const LEAD_EMAIL = "REPLACE_WITH_YOUR_EMAIL";
+// ===== FORM SUBMISSION (Lead + Review) → Google Sheet =====
+// Đường link Google Apps Script nhận thông tin khách hàng:
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxTIX4OaIDnGhbR7FjRjFWVUOFut5nEAw9Y3yI1aIuklNyq_77Nr2PbEAWiRbZy3jB-/exec";
 
 function showMsg(box, type, text){
   box.className = 'form-msg show ' + type;
@@ -1455,30 +1455,16 @@ function showMsg(box, type, text){
 async function handleForm(form, msgBox, kind){
   const btn = form.querySelector('.form-submit');
   const original = btn.textContent;
-  // Chưa cấu hình email
-  if(LEAD_EMAIL === "REPLACE_WITH_YOUR_EMAIL"){
-    showMsg(msgBox, 'success', '✅ Cảm ơn anh chị! Form đang chờ kích hoạt email nhận — sẽ hoạt động ngay khi cấu hình xong.');
-    form.reset();
-    return;
-  }
   btn.disabled = true; btn.textContent = 'Đang gửi...';
   const data = new FormData(form);
-  data.append('_subject', kind === 'lead' ? '🔥 LEAD MỚI từ website Money Master' : '⭐ ĐÁNH GIÁ MỚI từ khách hàng');
-  data.append('Loại', kind === 'lead' ? 'Đăng ký tư vấn' : 'Đánh giá khách hàng');
-  data.append('_template', 'table');
+  data.append('type', kind === 'lead' ? 'Đăng ký tư vấn' : 'Đánh giá khách hàng');
   try{
-    const res = await fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
-      method:'POST', headers:{'Accept':'application/json'}, body:data
-    });
-    const json = await res.json();
-    if(json.success === true || json.success === 'true'){
-      showMsg(msgBox, 'success', kind === 'lead'
-        ? '🎉 Cảm ơn anh chị! Money Master đã nhận thông tin và sẽ liên hệ trong 24h.'
-        : '🎉 Cảm ơn đánh giá của anh chị! Money Master rất trân trọng.');
-      form.reset();
-    } else {
-      throw new Error('fail');
-    }
+    // no-cors: Apps Script nhận được data, trình duyệt không đọc response nhưng vẫn ghi thành công
+    await fetch(SHEET_URL, { method:'POST', mode:'no-cors', body:data });
+    showMsg(msgBox, 'success', kind === 'lead'
+      ? '🎉 Cảm ơn anh chị! Money Master đã nhận thông tin và sẽ liên hệ trong 24h.'
+      : '🎉 Cảm ơn đánh giá của anh chị! Money Master rất trân trọng.');
+    form.reset();
   } catch(err){
     showMsg(msgBox, 'error', '❌ Có lỗi khi gửi. Anh chị vui lòng thử lại hoặc liên hệ trực tiếp.');
   } finally {

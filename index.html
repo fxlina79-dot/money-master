@@ -416,6 +416,54 @@ footer{background:#03130A;border-top:1px solid rgba(46,204,91,.1);padding:60px 5
   .app-qr{justify-content:center}
   .vs-total,.vs-deal{padding:16px}
 }
+
+/* ── LEAD FORM ── */
+#leadform{padding:100px 5%;background:linear-gradient(135deg,rgba(46,204,91,.08),rgba(30,158,58,.04),transparent)}
+.lead-wrap{max-width:1050px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.lead-info .section-title{margin-bottom:18px}
+.lead-benefits{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:14px}
+.lead-benefits li{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;color:var(--text2);line-height:1.5}
+.lead-benefits li .ic{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--green),var(--green2));display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;color:#fff}
+.lead-form{background:linear-gradient(135deg,#0d2517,#081a0f);border:1px solid rgba(46,204,91,.25);border-radius:24px;padding:36px;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.lead-form h3{font-size:1.4rem;font-weight:800;margin-bottom:6px;color:#fff}
+.lead-form .sub{color:var(--text2);font-size:.88rem;margin-bottom:24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.8rem;color:var(--text2);margin-bottom:6px;font-weight:600}
+.field label .req{color:var(--green)}
+.field input,.field select,.field textarea{width:100%;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:var(--text);font-size:.95rem;font-family:inherit;transition:.3s}
+.field input::placeholder,.field textarea::placeholder{color:#667}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green);background:rgba(46,204,91,.06);box-shadow:0 0 0 3px rgba(46,204,91,.12)}
+.field select{cursor:pointer}
+.field select option{background:#0d2517;color:var(--text)}
+.field textarea{resize:vertical;min-height:80px}
+.form-submit{width:100%;padding:16px;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border:none;border-radius:12px;font-size:1.05rem;font-weight:800;cursor:pointer;transition:.3s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(46,204,91,.4)}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-note{text-align:center;font-size:.78rem;color:var(--text2);margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px}
+.form-msg{margin-top:14px;padding:0;font-size:.9rem;text-align:center;border-radius:10px;overflow:hidden;max-height:0;transition:.4s}
+.form-msg.show{padding:14px;max-height:120px}
+.form-msg.success{background:rgba(46,204,91,.15);border:1px solid rgba(46,204,91,.4);color:#5be08a}
+.form-msg.error{background:rgba(255,68,68,.12);border:1px solid rgba(255,68,68,.3);color:#ff8888}
+
+/* ── REVIEW FORM ── */
+#reviewform{padding:100px 5%;background:var(--dark2)}
+.review-wrap{max-width:640px;margin:0 auto;text-align:center}
+.review-form{background:linear-gradient(135deg,#0d2517,#081a0f);border:1px solid rgba(46,204,91,.2);border-radius:24px;padding:36px;margin-top:40px;text-align:left}
+.star-input{display:flex;gap:8px;justify-content:center;margin:8px 0 24px;direction:rtl}
+.star-input input{display:none}
+.star-input label{font-size:2.4rem;color:#3a4a3e;cursor:pointer;transition:.2s;line-height:1}
+.star-input label:hover,.star-input label:hover ~ label,.star-input input:checked ~ label{color:#FFC83D}
+.star-label{text-align:center;color:var(--text2);font-size:.85rem;margin-bottom:4px}
+
+@media(max-width:900px){
+  .lead-wrap{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:600px){
+  #leadform,#reviewform{padding:56px 5%}
+  .lead-form,.review-form{padding:24px 18px}
+  .lead-form h3{font-size:1.2rem}
+  .star-input label{font-size:2rem}
+}
 </style>
 </head>
 <body>
@@ -1027,6 +1075,40 @@ footer{background:#03130A;border-top:1px solid rgba(46,204,91,.1);padding:60px 5
   </div>
 </section>
 
+<!-- REVIEW FORM -->
+<section id="reviewform">
+  <div class="review-wrap">
+    <p class="section-tag" data-aos="fade-up">Đánh Giá Của Bạn</p>
+    <h2 class="section-title" data-aos="fade-up">Chia Sẻ <span>Trải Nghiệm</span> Của Anh Chị</h2>
+    <p class="section-sub" style="margin:0 auto" data-aos="fade-up">Mỗi đánh giá của anh chị giúp Money Master phục vụ tốt hơn — và giúp nhiều nhà đầu tư khác tự tin hơn khi bắt đầu</p>
+    <form class="review-form" id="reviewForm" data-aos="fade-up">
+      <div class="star-label">Chấm điểm trải nghiệm của bạn</div>
+      <div class="star-input">
+        <input type="radio" id="st5" name="rating" value="5 sao" checked><label for="st5" title="5 sao">★</label>
+        <input type="radio" id="st4" name="rating" value="4 sao"><label for="st4" title="4 sao">★</label>
+        <input type="radio" id="st3" name="rating" value="3 sao"><label for="st3" title="3 sao">★</label>
+        <input type="radio" id="st2" name="rating" value="2 sao"><label for="st2" title="2 sao">★</label>
+        <input type="radio" id="st1" name="rating" value="1 sao"><label for="st1" title="1 sao">★</label>
+      </div>
+      <div class="field">
+        <label>Họ và tên <span class="req">*</span></label>
+        <input type="text" name="name" placeholder="Nguyễn Văn A" required>
+      </div>
+      <div class="field">
+        <label>Số điện thoại</label>
+        <input type="tel" name="phone" placeholder="09xx xxx xxx">
+      </div>
+      <div class="field">
+        <label>Nhận xét của bạn <span class="req">*</span></label>
+        <textarea name="review" placeholder="Chia sẻ cảm nhận của anh chị về Money Master..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">⭐ Gửi Đánh Giá</button>
+      <div class="form-note">🔒 Thông tin của bạn được bảo mật tuyệt đối</div>
+      <div class="form-msg" id="reviewMsg"></div>
+    </form>
+  </div>
+</section>
+
 <!-- PARTNERS -->
 <section id="partners">
   <div style="text-align:center;margin-bottom:28px;color:var(--text2);font-size:.85rem;letter-spacing:2px;text-transform:uppercase">ĐỐI TÁC UY TÍN</div>
@@ -1098,6 +1180,58 @@ footer{background:#03130A;border-top:1px solid rgba(46,204,91,.1);padding:60px 5
         <div style="margin-top:20px;padding:10px;background:rgba(46,204,91,.1);border-radius:12px;font-size:.75rem;color:var(--green);font-weight:600">⭐ 4.9/5 — 2,400+ đánh giá</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE FORM -->
+<section id="leadform">
+  <div class="lead-wrap">
+    <div class="lead-info" data-aos="fade-right">
+      <p class="section-tag">Đăng Ký Tư Vấn</p>
+      <h2 class="section-title">Để Lại Thông Tin — <span>Nhận Tư Vấn Miễn Phí</span></h2>
+      <p class="section-sub">Đội ngũ Money Master sẽ liên hệ trong 24h để tư vấn lộ trình phù hợp nhất với anh chị — hoàn toàn miễn phí, không ràng buộc.</p>
+      <ul class="lead-benefits">
+        <li><span class="ic">✓</span><span>Tư vấn lộ trình cá nhân hoá theo vốn & mục tiêu của anh chị</span></li>
+        <li><span class="ic">✓</span><span>Nhận tài liệu chiến lược giao dịch miễn phí</span></li>
+        <li><span class="ic">✓</span><span>Trải nghiệm thử công cụ EFT & tín hiệu VIP</span></li>
+        <li><span class="ic">✓</span><span>Giải đáp mọi thắc mắc 1-1 với chuyên gia 7 năm kinh nghiệm</span></li>
+      </ul>
+    </div>
+    <form class="lead-form" id="leadForm" data-aos="fade-left">
+      <h3>🚀 Đăng Ký Nhận Tư Vấn</h3>
+      <p class="sub">Điền thông tin bên dưới, em sẽ liên hệ anh chị ngay</p>
+      <div class="field">
+        <label>Họ và tên <span class="req">*</span></label>
+        <input type="text" name="name" placeholder="Nguyễn Văn A" required>
+      </div>
+      <div class="field">
+        <label>Số điện thoại <span class="req">*</span></label>
+        <input type="tel" name="phone" placeholder="09xx xxx xxx" required>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="email@example.com">
+      </div>
+      <div class="field">
+        <label>Anh chị quan tâm đến <span class="req">*</span></label>
+        <select name="interest" required>
+          <option value="">— Chọn lĩnh vực —</option>
+          <option value="Forex">Forex</option>
+          <option value="Chứng khoán">Chứng khoán</option>
+          <option value="Crypto">Crypto</option>
+          <option value="Bot giao dịch">Bot giao dịch tự động</option>
+          <option value="Công cụ EFT">Công cụ EFT</option>
+          <option value="Tất cả">Tất cả các lĩnh vực</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Lời nhắn (không bắt buộc)</label>
+        <textarea name="message" placeholder="Anh chị muốn được tư vấn về điều gì?"></textarea>
+      </div>
+      <button type="submit" class="form-submit">📩 Nhận Tư Vấn Miễn Phí</button>
+      <div class="form-note">🔒 Thông tin bảo mật — không chia sẻ cho bên thứ ba</div>
+      <div class="form-msg" id="leadMsg"></div>
+    </form>
   </div>
 </section>
 
@@ -1308,6 +1442,54 @@ document.querySelectorAll('.benefit-card,.bonus-card,.testi-card').forEach(card=
   });
   card.addEventListener('mouseleave',()=>{card.style.background=''});
 });
+
+// ===== FORM SUBMISSION (Lead + Review) =====
+// Email nhận thông tin khách hàng — THAY EMAIL CỦA CHỊ VÀO ĐÂY:
+const LEAD_EMAIL = "REPLACE_WITH_YOUR_EMAIL";
+
+function showMsg(box, type, text){
+  box.className = 'form-msg show ' + type;
+  box.textContent = text;
+}
+
+async function handleForm(form, msgBox, kind){
+  const btn = form.querySelector('.form-submit');
+  const original = btn.textContent;
+  // Chưa cấu hình email
+  if(LEAD_EMAIL === "REPLACE_WITH_YOUR_EMAIL"){
+    showMsg(msgBox, 'success', '✅ Cảm ơn anh chị! Form đang chờ kích hoạt email nhận — sẽ hoạt động ngay khi cấu hình xong.');
+    form.reset();
+    return;
+  }
+  btn.disabled = true; btn.textContent = 'Đang gửi...';
+  const data = new FormData(form);
+  data.append('_subject', kind === 'lead' ? '🔥 LEAD MỚI từ website Money Master' : '⭐ ĐÁNH GIÁ MỚI từ khách hàng');
+  data.append('Loại', kind === 'lead' ? 'Đăng ký tư vấn' : 'Đánh giá khách hàng');
+  data.append('_template', 'table');
+  try{
+    const res = await fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {
+      method:'POST', headers:{'Accept':'application/json'}, body:data
+    });
+    const json = await res.json();
+    if(json.success === true || json.success === 'true'){
+      showMsg(msgBox, 'success', kind === 'lead'
+        ? '🎉 Cảm ơn anh chị! Money Master đã nhận thông tin và sẽ liên hệ trong 24h.'
+        : '🎉 Cảm ơn đánh giá của anh chị! Money Master rất trân trọng.');
+      form.reset();
+    } else {
+      throw new Error('fail');
+    }
+  } catch(err){
+    showMsg(msgBox, 'error', '❌ Có lỗi khi gửi. Anh chị vui lòng thử lại hoặc liên hệ trực tiếp.');
+  } finally {
+    btn.disabled = false; btn.textContent = original;
+  }
+}
+
+const leadForm = document.getElementById('leadForm');
+if(leadForm) leadForm.addEventListener('submit', e => { e.preventDefault(); handleForm(leadForm, document.getElementById('leadMsg'), 'lead'); });
+const reviewForm = document.getElementById('reviewForm');
+if(reviewForm) reviewForm.addEventListener('submit', e => { e.preventDefault(); handleForm(reviewForm, document.getElementById('reviewMsg'), 'review'); });
 </script>
 </body>
 </html>

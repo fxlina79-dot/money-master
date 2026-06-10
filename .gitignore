@@ -5,3 +5,6 @@ index_backup.html
 node_modules
 .vercel
 .DS_Store
+
+.claude/
+.vercelignore

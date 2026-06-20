@@ -97,6 +97,16 @@ header{position:sticky;top:16px;z-index:100;margin:16px auto 0;max-width:1320px;
 @keyframes rotate{to{transform:rotate(360deg)}}
 .hero-right .big{font-size:2.4rem;font-weight:800;color:var(--gold);margin:16px 0 6px;text-shadow:0 0 12px var(--gold2)}
 
+/* ARTICLE MODAL */
+.article-overlay{position:fixed;inset:0;background:rgba(2,6,16,.8);backdrop-filter:blur(6px);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
+.article-overlay.open{display:flex}
+.article-panel{background:#fff;color:#1a1a1a;max-width:820px;width:100%;border-radius:18px;padding:48px 44px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:artIn .35s ease}
+@keyframes artIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.article-close{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;background:#f0f0f0;border:none;font-size:1.4rem;cursor:pointer;color:#333;display:flex;align-items:center;justify-content:center;transition:.25s;z-index:5;line-height:1}
+.article-close:hover{background:#e2231a;color:#fff;transform:rotate(90deg)}
+.article-panel svg{display:block}
+@media(max-width:600px){.article-panel{padding:40px 20px 32px}.article-panel h1{font-size:24px!important}.article-panel h2{font-size:20px!important}.article-panel p,.article-panel li{font-size:16px!important}}
+
 /* SECTION */
 .section{padding:80px 0;border-bottom:1px solid rgba(59,130,246,.1)}
 .section-title{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;text-align:center;background:linear-gradient(135deg,#f0f9ff,#7aa2f7);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px}
@@ -396,9 +406,9 @@ footer{background:#020617;margin-top:40px;padding:50px 0 30px;border-top:1px sol
     <div class="section-title" data-aos="fade-up">📘 Thư Viện Kiến Thức Thực Chiến</div>
     <div class="section-sub" data-aos="fade-up">Từ Price Action đến tâm lý giao dịch – dành riêng cho trader nghiêm túc</div>
     <div class="blog-grid">
-      <div class="blog-card" data-aos="fade-up" data-aos-delay="0"><div class="inner"><i class="fas fa-chart-simple"></i><h3>Supply &amp; Demand nâng cao</h3><p>Nhận diện vùng cung cầu với khối lượng giao dịch</p><a href="#" class="more">Đọc bài →</a></div></div>
-      <div class="blog-card" data-aos="fade-up" data-aos-delay="100"><div class="inner"><i class="fas fa-brain"></i><h3>Tâm lý giao dịch đỉnh cao</h3><p>Kiểm soát FOMO và giao dịch kỷ luật</p><a href="#" class="more">Đọc bài →</a></div></div>
-      <div class="blog-card" data-aos="fade-up" data-aos-delay="200"><div class="inner"><i class="fas fa-chart-line"></i><h3>Quản trị vốn chuyên nghiệp</h3><p>Công thức Kelly &amp; Risk 1% cho trader dài hạn</p><a href="#" class="more">Đọc bài →</a></div></div>
+      <div class="blog-card" data-aos="fade-up" data-aos-delay="0"><div class="inner"><i class="fas fa-chart-simple"></i><h3>Supply &amp; Demand nâng cao</h3><p>Nhận diện vùng cung cầu với khối lượng giao dịch</p><a href="#" class="more" onclick="event.preventDefault();openArticle('supply-demand')">Đọc bài →</a></div></div>
+      <div class="blog-card" data-aos="fade-up" data-aos-delay="100"><div class="inner"><i class="fas fa-brain"></i><h3>Tâm lý giao dịch đỉnh cao</h3><p>Kiểm soát FOMO và giao dịch kỷ luật</p><a href="#" class="more" onclick="event.preventDefault();openArticle('tam-ly')">Đọc bài →</a></div></div>
+      <div class="blog-card" data-aos="fade-up" data-aos-delay="200"><div class="inner"><i class="fas fa-chart-line"></i><h3>Quản trị vốn chuyên nghiệp</h3><p>Công thức Kelly &amp; Risk 1% cho trader dài hạn</p><a href="#" class="more" onclick="event.preventDefault();openArticle('quan-tri-von')">Đọc bài →</a></div></div>
     </div>
   </div>
 </section>
@@ -534,6 +544,362 @@ footer{background:#020617;margin-top:40px;padding:50px 0 30px;border-top:1px sol
   </div>
 </footer>
 
+<!-- ARTICLE MODAL: Supply & Demand -->
+<div class="article-overlay" id="art-supply-demand">
+  <div class="article-panel">
+    <button class="article-close" onclick="closeArticle('supply-demand')" aria-label="Đóng">✕</button>
+    <div style="font-family: Georgia, 'Times New Roman', serif; max-width: 760px; margin: 0 auto; color: #1a1a1a; line-height: 1.75;">
+
+      <h1 style="font-size: 32px; font-weight: 700; line-height: 1.3; margin-bottom: 28px;">Đọc Vị Vùng Cung Cầu: Khi Khối Lượng Giao Dịch Lên Tiếng</h1>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Trên biểu đồ giá, có những vùng giá im lặng nhưng lại nói lên nhiều điều nhất. Đó là nơi phe mua và phe bán từng "đụng độ" dữ dội, để lại dấu vết mà giá thường quay lại — không phải một lần, mà nhiều lần. Đó chính là <strong>vùng Supply (cung)</strong> và <strong>Demand (cầu)</strong>.</p>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Nhưng làm sao để phân biệt một vùng cung cầu thật sự mạnh với một vùng "vẽ cho có"? Câu trả lời nằm ở một yếu tố mà nhiều người bỏ qua: <strong>khối lượng giao dịch (volume)</strong>.</p>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Vì sao volume là chìa khóa?</h2>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Giá có thể nói dối, nhưng dòng tiền thì không. Một cây nến tăng mạnh với volume thấp có thể chỉ là "tát ao bèo" — vài lệnh nhỏ đẩy giá đi mà không có lực mua thực sự đứng sau. Ngược lại, khi một vùng giá xuất hiện cùng volume đột biến, đó là dấu hiệu cho thấy <strong>dòng tiền lớn đang vào cuộc</strong> — ngân hàng, quỹ đầu tư, hay các "tay to" của thị trường.</p>
+
+      <p style="font-size: 18px; margin-bottom: 28px;">Volume chính là thước đo độ tin cậy của vùng cung cầu. Không có volume, vùng đó chỉ là một đường kẻ vô hồn trên biểu đồ.</p>
+
+      <figure style="margin: 0 0 36px 0;">
+        <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:8px;border:1px solid #e5e5e5;background:#fbfbf9">
+          <rect x="0" y="58" width="760" height="40" fill="#f59e0b" opacity="0.14"/>
+          <text x="14" y="50" font-size="12" fill="#b45309" font-family="Arial" font-weight="bold">VÙNG SUPPLY (CUNG)</text>
+          <rect x="0" y="190" width="760" height="40" fill="#16a34a" opacity="0.14"/>
+          <text x="14" y="252" font-size="12" fill="#15803d" font-family="Arial" font-weight="bold">VÙNG DEMAND (CẦU)</text>
+          <!-- candles: x, wickTop, wickBot, bodyTop, bodyBot, color -->
+          <g stroke-width="0">
+            <line x1="55" y1="200" x2="55" y2="222" stroke="#e2231a"/><rect x="48" y="206" width="14" height="12" fill="#e2231a"/>
+            <line x1="110" y1="198" x2="110" y2="220" stroke="#16a34a"/><rect x="103" y="204" width="14" height="11" fill="#16a34a"/>
+            <line x1="165" y1="202" x2="165" y2="224" stroke="#e2231a"/><rect x="158" y="208" width="14" height="10" fill="#e2231a"/>
+            <line x1="220" y1="150" x2="220" y2="216" stroke="#16a34a"/><rect x="213" y="156" width="14" height="56" fill="#16a34a"/>
+            <line x1="275" y1="138" x2="275" y2="160" stroke="#16a34a"/><rect x="268" y="142" width="14" height="16" fill="#16a34a"/>
+            <line x1="330" y1="120" x2="330" y2="146" stroke="#16a34a"/><rect x="323" y="124" width="14" height="18" fill="#16a34a"/>
+            <line x1="385" y1="100" x2="385" y2="126" stroke="#16a34a"/><rect x="378" y="104" width="14" height="18" fill="#16a34a"/>
+            <line x1="440" y1="68" x2="440" y2="138" stroke="#e2231a"/><rect x="433" y="78" width="14" height="56" fill="#e2231a"/>
+            <line x1="495" y1="110" x2="495" y2="136" stroke="#e2231a"/><rect x="488" y="116" width="14" height="16" fill="#e2231a"/>
+            <line x1="550" y1="138" x2="550" y2="164" stroke="#e2231a"/><rect x="543" y="142" width="14" height="18" fill="#e2231a"/>
+            <line x1="605" y1="166" x2="605" y2="196" stroke="#e2231a"/><rect x="598" y="170" width="14" height="22" fill="#e2231a"/>
+            <line x1="660" y1="192" x2="660" y2="222" stroke="#16a34a"/><rect x="653" y="198" width="14" height="20" fill="#16a34a"/>
+          </g>
+          <!-- volume baseline -->
+          <line x1="0" y1="370" x2="760" y2="370" stroke="#ddd"/>
+          <text x="14" y="290" font-size="11" fill="#999" font-family="Arial">VOLUME</text>
+          <g>
+            <rect x="48" y="352" width="14" height="18" fill="#cbd5e1"/>
+            <rect x="103" y="356" width="14" height="14" fill="#cbd5e1"/>
+            <rect x="158" y="354" width="14" height="16" fill="#cbd5e1"/>
+            <rect x="213" y="312" width="14" height="58" fill="#16a34a" opacity="0.7"/>
+            <rect x="268" y="346" width="14" height="24" fill="#cbd5e1"/>
+            <rect x="323" y="344" width="14" height="26" fill="#cbd5e1"/>
+            <rect x="378" y="348" width="14" height="22" fill="#cbd5e1"/>
+            <rect x="433" y="316" width="14" height="54" fill="#e2231a" opacity="0.7"/>
+            <rect x="488" y="350" width="14" height="20" fill="#cbd5e1"/>
+            <rect x="543" y="348" width="14" height="22" fill="#cbd5e1"/>
+            <rect x="598" y="346" width="14" height="24" fill="#cbd5e1"/>
+            <rect x="653" y="322" width="14" height="48" fill="#16a34a" opacity="0.7"/>
+          </g>
+        </svg>
+        <figcaption style="font-size: 14px; color: #777; font-style: italic; margin-top: 10px; text-align: center;">Nến bứt phá kèm volume cao tạo vùng demand (xanh) → giá tăng → nến đảo chiều kèm volume cao tạo vùng supply (cam) → giá quay lại test vùng demand với volume tăng trở lại.</figcaption>
+      </figure>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Ba dấu hiệu nhận diện vùng cung cầu chất lượng</h2>
+
+      <p style="font-size: 18px; margin-bottom: 14px;"><strong>1. Volume tăng đột biến tại điểm đảo chiều</strong><br>Khi giá đang đi ngang (sideway) rồi bất ngờ bứt phá mạnh kèm volume cao gấp 2-3 lần trung bình, đó là dấu hiệu của vùng tích lũy lớn — nơi dòng tiền thông minh đã âm thầm gom hàng (demand) hoặc xả hàng (supply) trước khi giá di chuyển.</p>
+
+      <p style="font-size: 18px; margin-bottom: 14px;"><strong>2. Cây nến động lực (momentum candle) lớn, thân dài, volume cao</strong><br>Một cây nến phá vỡ mạnh, thân nến dài, đóng cửa gần đỉnh hoặc đáy, đi cùng volume vượt trội — đây là "chữ ký" của lực cầu hoặc lực cung thực sự, không phải nhiễu thị trường.</p>
+
+      <p style="font-size: 18px; margin-bottom: 28px;"><strong>3. Giá rời vùng nhanh và dứt khoát</strong><br>Vùng cung cầu chất lượng thường khiến giá rời đi nhanh, ít nến giằng co. Nếu giá lẹt đẹt mãi không thoát ra được dù volume cao, có thể đó là vùng cung cầu yếu, dễ bị phá vỡ khi quay lại test.</p>
+
+      <figure style="margin: 0 0 36px 0;">
+        <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:8px;border:1px solid #e5e5e5;background:#fbfbf9">
+          <!-- panel 1 -->
+          <text x="125" y="28" font-size="13" fill="#15803d" font-family="Arial" font-weight="bold" text-anchor="middle">1. Volume đột biến</text>
+          <line x1="125" y1="50" x2="125" y2="130" stroke="#16a34a"/><rect x="116" y="60" width="18" height="60" fill="#16a34a"/>
+          <rect x="116" y="150" width="18" height="50" fill="#16a34a" opacity="0.6"/>
+          <rect x="80" y="178" width="14" height="22" fill="#cbd5e1"/><rect x="158" y="180" width="14" height="20" fill="#cbd5e1"/>
+          <line x1="60" y1="205" x2="190" y2="205" stroke="#ddd"/>
+          <!-- divider -->
+          <line x1="253" y1="20" x2="253" y2="220" stroke="#eee"/>
+          <!-- panel 2 -->
+          <text x="380" y="28" font-size="13" fill="#15803d" font-family="Arial" font-weight="bold" text-anchor="middle">2. Nến thân dài</text>
+          <line x1="340" y1="120" x2="340" y2="135" stroke="#e2231a"/><rect x="333" y="125" width="14" height="10" fill="#e2231a"/>
+          <line x1="380" y1="52" x2="380" y2="140" stroke="#16a34a"/><rect x="371" y="58" width="18" height="78" fill="#16a34a"/>
+          <line x1="420" y1="60" x2="420" y2="78" stroke="#16a34a"/><rect x="413" y="64" width="14" height="12" fill="#16a34a"/>
+          <text x="380" y="160" font-size="11" fill="#777" font-family="Arial" text-anchor="middle">đóng cửa gần đỉnh ▲</text>
+          <line x1="506" y1="20" x2="506" y2="220" stroke="#eee"/>
+          <!-- panel 3 -->
+          <text x="633" y="28" font-size="13" fill="#15803d" font-family="Arial" font-weight="bold" text-anchor="middle">3. Thoát vùng nhanh</text>
+          <rect x="560" y="120" width="150" height="34" fill="#16a34a" opacity="0.14"/>
+          <text x="635" y="142" font-size="10" fill="#15803d" font-family="Arial" text-anchor="middle">DEMAND</text>
+          <path d="M575 137 L600 110 L625 80 L650 55" stroke="#16a34a" stroke-width="3" fill="none"/>
+          <path d="M650 55 l-10 2 l5 8 z" fill="#16a34a"/>
+        </svg>
+        <figcaption style="font-size: 14px; color: #777; font-style: italic; margin-top: 10px; text-align: center;">Ba dấu hiệu thường gặp ở một vùng cung cầu đáng tin cậy: volume đột biến tại điểm đảo chiều, nến thân dài đóng cửa gần đỉnh/đáy, và giá thoát vùng nhanh dứt khoát.</figcaption>
+      </figure>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Ví dụ thực tế: một "kịch bản" cung cầu điển hình</h2>
+
+      <p style="font-size: 18px; margin-bottom: 14px;">Hãy hình dung một cổ phiếu đang đi ngang trong nhiều phiên, volume thấp, thị trường "ngủ yên". Bỗng một cây nến bứt phá tăng mạnh xuất hiện, volume tăng vọt gấp 2-3 lần trung bình — đây chính là <strong>vùng demand</strong> được hình thành. Giá sau đó tăng một mạch nhiều phiên liên tiếp.</p>
+
+      <p style="font-size: 18px; margin-bottom: 14px;">Đến một vùng giá cao hơn, đà tăng chững lại, giá đi ngang vài phiên rồi xuất hiện một cây nến giảm mạnh, thân dài, volume cũng tăng đột biến — đây là dấu hiệu <strong>vùng supply</strong> xuất hiện, lực bán áp đảo và giá quay đầu giảm.</p>
+
+      <p style="font-size: 18px; margin-bottom: 28px;">Vài phiên sau, giá giảm về đúng vùng demand ban đầu. Nếu volume lại tăng lên đúng lúc giá chạm vùng này, khả năng cao dòng tiền lớn đang quay lại hành động — vùng demand được xác nhận là còn "hiệu lực". Ngược lại, nếu một vùng đã bị test nhiều lần mà volume giảm dần qua mỗi lần test, đó là tín hiệu vùng đang "yếu sức", nên thận trọng.</p>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Hướng dẫn xác định điểm Entry tại vùng cung cầu</h2>
+
+      <p style="font-size: 18px; margin-bottom: 28px;">Nhận diện được vùng cung cầu mới chỉ là bước đầu. Điều quan trọng nhất với người mới là biết <strong>khi nào nên vào lệnh</strong>, chứ không phải cứ thấy giá chạm vùng là mua hoặc bán ngay. Dưới đây là quy trình 4 bước đơn giản, ai cũng áp dụng được.</p>
+
+      <figure style="margin: 0 0 36px 0;">
+        <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:8px;border:1px solid #e5e5e5;background:#fbfbf9">
+          <rect x="0" y="56" width="760" height="38" fill="#f59e0b" opacity="0.14"/>
+          <text x="14" y="48" font-size="12" fill="#b45309" font-family="Arial" font-weight="bold">VÙNG SUPPLY → CHỐT LỜI (TP)</text>
+          <line x1="0" y1="75" x2="760" y2="75" stroke="#16a34a" stroke-dasharray="7 5" stroke-width="1.5"/>
+          <text x="700" y="70" font-size="12" fill="#15803d" font-family="Arial" font-weight="bold" text-anchor="end">TP</text>
+          <rect x="0" y="208" width="760" height="40" fill="#16a34a" opacity="0.14"/>
+          <text x="14" y="232" font-size="12" fill="#15803d" font-family="Arial" font-weight="bold">VÙNG DEMAND (mua)</text>
+          <line x1="0" y1="262" x2="760" y2="262" stroke="#e2231a" stroke-dasharray="7 5" stroke-width="1.5"/>
+          <text x="700" y="278" font-size="12" fill="#e2231a" font-family="Arial" font-weight="bold" text-anchor="end">STOP LOSS (SL)</text>
+          <g>
+            <line x1="60" y1="150" x2="60" y2="222" stroke="#16a34a"/><rect x="53" y="156" width="14" height="58" fill="#16a34a"/>
+            <line x1="115" y1="140" x2="115" y2="166" stroke="#16a34a"/><rect x="108" y="144" width="14" height="18" fill="#16a34a"/>
+            <line x1="170" y1="150" x2="170" y2="184" stroke="#e2231a"/><rect x="163" y="154" width="14" height="26" fill="#e2231a"/>
+            <line x1="225" y1="170" x2="225" y2="210" stroke="#e2231a"/><rect x="218" y="176" width="14" height="30" fill="#e2231a"/>
+            <line x1="280" y1="196" x2="280" y2="236" stroke="#e2231a"/><rect x="273" y="202" width="14" height="28" fill="#e2231a"/>
+            <!-- confirmation candle at demand -->
+            <line x1="335" y1="150" x2="335" y2="232" stroke="#16a34a"/><rect x="328" y="158" width="14" height="64" fill="#16a34a"/>
+            <circle cx="335" cy="150" r="9" fill="#16a34a" stroke="#fff" stroke-width="2"/>
+            <text x="335" y="135" font-size="12" fill="#15803d" font-family="Arial" font-weight="bold" text-anchor="middle">ENTRY ▼</text>
+            <line x1="390" y1="120" x2="390" y2="160" stroke="#16a34a"/><rect x="383" y="126" width="14" height="30" fill="#16a34a"/>
+            <line x1="445" y1="100" x2="445" y2="130" stroke="#16a34a"/><rect x="438" y="104" width="14" height="24" fill="#16a34a"/>
+            <line x1="500" y1="84" x2="500" y2="112" stroke="#16a34a"/><rect x="493" y="88" width="14" height="22" fill="#16a34a"/>
+          </g>
+          <path d="M520 96 L560 96" stroke="#16a34a" stroke-width="2" stroke-dasharray="4 4"/>
+          <path d="M560 96 l-8 -5 l0 10 z" fill="#16a34a"/>
+        </svg>
+        <figcaption style="font-size: 14px; color: #777; font-style: italic; margin-top: 10px; text-align: center;">Giá quay lại test vùng demand, xuất hiện nến xác nhận (chấm xanh) — đó là điểm entry. Đường đỏ nét đứt là vùng đặt stop loss (SL), đường xanh nét đứt gần vùng supply là vùng chốt lời (TP).</figcaption>
+      </figure>
+
+      <p style="font-size: 18px; margin-bottom: 14px;"><strong>Bước 1 — Chờ giá quay lại đúng vùng, đừng mua đuổi.</strong><br>Khi giá vừa bứt phá khỏi vùng demand và tăng mạnh, đừng vội mua vào lúc đó. Hãy kiên nhẫn chờ giá quay lại (retest) đúng vùng demand đã đánh dấu. Đây là nguyên tắc quan trọng nhất: mua tại vùng giá tốt, không mua đuổi theo cảm xúc.</p>
+
+      <p style="font-size: 18px; margin-bottom: 14px;"><strong>Bước 2 — Quan sát nến xác nhận tại vùng.</strong><br>Khi giá chạm vùng demand, đừng vào lệnh ngay lập tức. Hãy chờ một cây nến đảo chiều rõ ràng xuất hiện — ví dụ nến rút chân dài (pin bar), nến nhấn chìm tăng (bullish engulfing), hoặc nến tăng thân lớn đóng cửa gần đỉnh. Đây chính là "nến xác nhận", giống như chấm xanh trong hình minh họa trên.</p>
+
+      <p style="font-size: 18px; margin-bottom: 14px;"><strong>Bước 3 — Kiểm tra volume tại nến xác nhận.</strong><br>Nến xác nhận có giá trị cao hơn nhiều nếu đi kèm volume tăng so với các nến trước đó. Volume tăng tại đây cho thấy lực mua thật sự đang quay lại, không phải chỉ là một nhịp dao động ngẫu nhiên.</p>
+
+      <p style="font-size: 18px; margin-bottom: 24px;"><strong>Bước 4 — Vào lệnh và đặt SL/TP hợp lý.</strong><br>Sau khi nến xác nhận đóng cửa, đó là điểm entry. Đặt lệnh dừng lỗ (SL) ngay dưới đáy của vùng demand — nếu giá phá xuống dưới vùng này nghĩa là kịch bản đã sai. Chốt lời (TP) hợp lý là vùng supply gần nhất, nơi nhiều khả năng giá sẽ gặp lực bán trở lại.</p>
+
+      <p style="font-size: 18px; background: #f7f5f0; border-left: 3px solid #1a1a1a; padding: 16px 20px; margin-bottom: 28px;">Quy tắc vàng: <strong>không có nến xác nhận, không có volume hỗ trợ — không vào lệnh.</strong> Kiên nhẫn chờ đủ tín hiệu luôn tốt hơn việc đoán mò.</p>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Lời kết</h2>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Vùng cung cầu không phải là phép màu, nhưng khi kết hợp với volume, nó trở thành một công cụ đọc vị tâm lý thị trường cực kỳ mạnh mẽ. Volume giúp bạn lọc bỏ những vùng "giả", tập trung vào nơi dòng tiền thật sự hiện diện.</p>
+
+      <p style="font-size: 18px; margin-bottom: 32px;">Hãy nhớ: giá chỉ là bề nổi, volume mới là câu chuyện thật phía sau mỗi cây nến. Người giao dịch giỏi không chỉ nhìn giá đi đâu, mà còn lắng nghe xem <strong>ai đang đứng sau đẩy giá đi</strong>.</p>
+
+      <div style="background:#0a1120;border-radius:14px;padding:24px;text-align:center;margin-bottom:8px">
+        <p style="color:#cbd5e6;font-size:16px;margin-bottom:14px;font-family:Inter,sans-serif">Muốn học sâu hơn & thực chiến cùng chuyên gia?</p>
+        <a href="https://zalo.me/g/umygtg111" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(95deg,#2563eb,#3b82f6);color:#fff;font-weight:700;padding:13px 30px;border-radius:40px;text-decoration:none;font-family:Inter,sans-serif">📩 Tham gia đào tạo Live cùng Masterfx.vn</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE MODAL: Tâm lý giao dịch -->
+<div class="article-overlay" id="art-tam-ly">
+  <div class="article-panel">
+    <button class="article-close" onclick="closeArticle('tam-ly')" aria-label="Đóng">✕</button>
+    <div style="font-family: Georgia, 'Times New Roman', serif; max-width: 760px; margin: 0 auto; color: #1a1a1a; line-height: 1.75;">
+
+      <h1 style="font-size: 32px; font-weight: 700; line-height: 1.3; margin-bottom: 28px;">Tâm Lý Giao Dịch: Kẻ Thù Lớn Nhất Không Phải Thị Trường, Mà Là Chính Bạn</h1>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Hầu hết trader thua lỗ không phải vì thiếu kiến thức, mà vì <strong>không kiểm soát được cảm xúc</strong>. Cùng một hệ thống giao dịch, người kỷ luật thì có lãi, người để cảm xúc dẫn dắt thì cháy tài khoản. Sự khác biệt nằm ở cái đầu, không phải ở biểu đồ.</p>
+
+      <p style="font-size: 18px; margin-bottom: 28px;">Bài viết này mổ xẻ hai kẻ thù tâm lý lớn nhất — <strong>FOMO</strong> và <strong>sợ hãi</strong> — và cách xây dựng kỷ luật thép để giao dịch như một người chuyên nghiệp.</p>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Vòng xoáy cảm xúc giết chết tài khoản</h2>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Mỗi trader đều đi qua một "vòng lặp cảm xúc" giống nhau: khi giá tăng, lòng tham kéo bạn mua đuổi ở đỉnh (FOMO — sợ bỏ lỡ); khi giá giảm, nỗi sợ khiến bạn bán tháo ở đáy. Kết quả: <strong>mua cao, bán thấp</strong> — ngược hoàn toàn với nguyên tắc kiếm tiền.</p>
+
+      <figure style="margin: 0 0 36px 0;">
+        <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:8px;border:1px solid #e5e5e5;background:#fbfbf9">
+          <path d="M40 250 Q160 250 220 170 T400 70 Q470 60 520 130 T700 270" fill="none" stroke="#3b82f6" stroke-width="3"/>
+          <circle cx="400" cy="70" r="7" fill="#e2231a"/>
+          <text x="400" y="50" font-size="13" fill="#e2231a" font-family="Arial" font-weight="bold" text-anchor="middle">FOMO — mua ở đỉnh 😱</text>
+          <circle cx="690" cy="268" r="7" fill="#e2231a"/>
+          <text x="660" y="300" font-size="13" fill="#e2231a" font-family="Arial" font-weight="bold" text-anchor="middle">Sợ hãi — bán ở đáy 😰</text>
+          <circle cx="220" cy="170" r="7" fill="#16a34a"/>
+          <text x="190" y="150" font-size="12" fill="#15803d" font-family="Arial" font-weight="bold" text-anchor="middle">Điểm mua tốt ✓</text>
+          <text x="40" y="325" font-size="12" fill="#999" font-family="Arial">Thời gian →</text>
+        </svg>
+        <figcaption style="font-size: 14px; color: #777; font-style: italic; margin-top: 10px; text-align: center;">Trader cảm xúc thường mua đúng đỉnh (FOMO) và bán đúng đáy (sợ hãi) — vòng xoáy khiến tài khoản bào mòn dần qua mỗi lần giao dịch.</figcaption>
+      </figure>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">4 nguyên tắc kỷ luật của trader chuyên nghiệp</h2>
+
+      <p style="font-size: 18px; margin-bottom: 14px;"><strong>1. Luôn có kế hoạch trước khi vào lệnh.</strong><br>Điểm vào, điểm dừng lỗ (SL), điểm chốt lời (TP) phải được xác định <em>trước</em> khi bấm lệnh — không phải vừa đánh vừa nghĩ. Kế hoạch viết ra giấy giúp bạn không bị cảm xúc bẻ lái giữa chừng.</p>
+
+      <p style="font-size: 18px; margin-bottom: 14px;"><strong>2. Chấp nhận thua lỗ nhỏ là một phần của cuộc chơi.</strong><br>Không ai thắng 100%. Trader giỏi cắt lỗ nhanh và dứt khoát khi sai, thay vì "gồng lỗ" hy vọng giá quay lại. Một lệnh lỗ nhỏ theo kế hoạch tốt hơn một lệnh lỗ lớn vì cố chấp.</p>
+
+      <p style="font-size: 18px; margin-bottom: 14px;"><strong>3. Không trả thù thị trường (revenge trading).</strong><br>Vừa thua một lệnh, đừng vội vào lệnh tiếp để "gỡ". Đây là lúc cảm xúc cao nhất và quyết định tệ nhất. Hãy đứng dậy, rời màn hình, quay lại khi đầu óc đã bình tĩnh.</p>
+
+      <p style="font-size: 18px; margin-bottom: 28px;"><strong>4. Ghi nhật ký giao dịch.</strong><br>Mỗi lệnh: lý do vào, cảm xúc lúc đó, kết quả. Sau 30 lệnh, bạn sẽ thấy rõ pattern sai lầm của chính mình — đó là tài liệu quý hơn bất kỳ khóa học nào.</p>
+
+      <figure style="margin: 0 0 36px 0;">
+        <svg viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:8px;border:1px solid #e5e5e5;background:#fbfbf9">
+          <text x="380" y="34" font-size="15" fill="#1a1a1a" font-family="Arial" font-weight="bold" text-anchor="middle">CHU TRÌNH KỶ LUẬT 5 BƯỚC</text>
+          <g font-family="Arial" font-size="12" fill="#15803d" font-weight="bold" text-anchor="middle">
+            <circle cx="90" cy="120" r="40" fill="#16a34a" opacity="0.12" stroke="#16a34a"/><text x="90" y="116">Lập</text><text x="90" y="132">kế hoạch</text>
+            <circle cx="235" cy="120" r="40" fill="#16a34a" opacity="0.12" stroke="#16a34a"/><text x="235" y="116">Chờ</text><text x="235" y="132">tín hiệu</text>
+            <circle cx="380" cy="120" r="40" fill="#16a34a" opacity="0.12" stroke="#16a34a"/><text x="380" y="116">Vào lệnh</text><text x="380" y="132">+ SL/TP</text>
+            <circle cx="525" cy="120" r="40" fill="#16a34a" opacity="0.12" stroke="#16a34a"/><text x="525" y="116">Tuân thủ</text><text x="525" y="132">kế hoạch</text>
+            <circle cx="670" cy="120" r="40" fill="#16a34a" opacity="0.12" stroke="#16a34a"/><text x="670" y="116">Ghi</text><text x="670" y="132">nhật ký</text>
+          </g>
+          <g stroke="#94a3b8" stroke-width="2" fill="none">
+            <path d="M135 120 L190 120"/><path d="M280 120 L335 120"/><path d="M425 120 L480 120"/><path d="M570 120 L625 120"/>
+          </g>
+        </svg>
+        <figcaption style="font-size: 14px; color: #777; font-style: italic; margin-top: 10px; text-align: center;">Lặp lại chu trình 5 bước này cho mọi lệnh giúp loại bỏ cảm xúc khỏi quyết định giao dịch.</figcaption>
+      </figure>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Kết quả khi áp dụng kỷ luật tâm lý</h2>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Một học viên của Masterfx.vn từng thua 5 tháng liên tiếp vì FOMO và revenge trading. Sau khi áp dụng nghiêm chu trình 5 bước + ghi nhật ký giao dịch trong 60 ngày, kết quả thay đổi rõ rệt:</p>
+
+      <figure style="margin: 0 0 28px 0;">
+        <svg viewBox="0 0 760 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:8px;border:1px solid #e5e5e5;background:#fbfbf9">
+          <text x="200" y="30" font-size="13" fill="#777" font-family="Arial" font-weight="bold" text-anchor="middle">TRƯỚC (cảm xúc)</text>
+          <text x="560" y="30" font-size="13" fill="#15803d" font-family="Arial" font-weight="bold" text-anchor="middle">SAU (kỷ luật)</text>
+          <line x1="380" y1="20" x2="380" y2="210" stroke="#eee"/>
+          <!-- before: erratic declining equity -->
+          <polyline points="40,90 90,120 140,100 190,150 240,140 290,185 340,200" fill="none" stroke="#e2231a" stroke-width="3"/>
+          <text x="200" y="205" font-size="12" fill="#e2231a" font-family="Arial" text-anchor="middle">Tài khoản giảm dần, win rate ~38%</text>
+          <!-- after: rising equity -->
+          <polyline points="420,180 470,170 520,175 570,140 620,120 670,95 720,70" fill="none" stroke="#16a34a" stroke-width="3"/>
+          <text x="570" y="205" font-size="12" fill="#15803d" font-family="Arial" text-anchor="middle">Tài khoản tăng đều, win rate ~61%</text>
+        </svg>
+        <figcaption style="font-size: 14px; color: #777; font-style: italic; margin-top: 10px; text-align: center;">Cùng một hệ thống — chỉ thay đổi tâm lý và kỷ luật, đường vốn (equity curve) chuyển từ dốc xuống sang đi lên ổn định.</figcaption>
+      </figure>
+
+      <p style="font-size: 18px; background: #f7f5f0; border-left: 3px solid #1a1a1a; padding: 16px 20px; margin-bottom: 28px;">Quy tắc vàng: <strong>Kế hoạch quyết định lệnh — cảm xúc không có quyền biểu quyết.</strong> Bạn không thể kiểm soát thị trường, nhưng hoàn toàn kiểm soát được phản ứng của mình.</p>
+
+      <div style="background:#0a1120;border-radius:14px;padding:24px;text-align:center;margin-bottom:8px">
+        <p style="color:#cbd5e6;font-size:16px;margin-bottom:14px;font-family:Inter,sans-serif">Muốn rèn kỷ luật cùng cộng đồng & mentor mỗi tối?</p>
+        <a href="https://zalo.me/g/umygtg111" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(95deg,#2563eb,#3b82f6);color:#fff;font-weight:700;padding:13px 30px;border-radius:40px;text-decoration:none;font-family:Inter,sans-serif">📩 Tham gia đào tạo Live cùng Masterfx.vn</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE MODAL: Quản trị vốn -->
+<div class="article-overlay" id="art-quan-tri-von">
+  <div class="article-panel">
+    <button class="article-close" onclick="closeArticle('quan-tri-von')" aria-label="Đóng">✕</button>
+    <div style="font-family: Georgia, 'Times New Roman', serif; max-width: 760px; margin: 0 auto; color: #1a1a1a; line-height: 1.75;">
+
+      <h1 style="font-size: 32px; font-weight: 700; line-height: 1.3; margin-bottom: 28px;">Quản Trị Vốn: Lý Do Thật Sự Giúp Trader Sống Sót Và Làm Giàu</h1>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Bạn có thể có hệ thống giao dịch tốt nhất thế giới, nhưng nếu <strong>quản trị vốn sai</strong>, chỉ vài lệnh thua liên tiếp là đủ để xóa sạch tài khoản. Ngược lại, một hệ thống bình thường nhưng quản trị vốn kỷ luật vẫn có thể sinh lời bền vững qua nhiều năm.</p>
+
+      <p style="font-size: 18px; margin-bottom: 28px;">Quản trị vốn không hấp dẫn như "kèo x10 tài khoản", nhưng nó chính là thứ phân biệt giữa người trụ lại thị trường và người rời đi sau 3 tháng.</p>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Nguyên tắc Risk 1%: nền tảng sống còn</h2>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Nguyên tắc đơn giản nhưng quyền lực nhất: <strong>không bao giờ mạo hiểm quá 1% tài khoản cho một lệnh</strong>. Với tài khoản $1.000, mỗi lệnh chỉ chấp nhận lỗ tối đa $10. Nghe có vẻ ít, nhưng đây chính là tấm khiên bảo vệ bạn khỏi "cháy tài khoản".</p>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Vì sao? Hãy nhìn vào sức mạnh của con số: nếu mỗi lệnh chỉ risk 1%, bạn phải thua <strong>liên tiếp gần 100 lệnh</strong> mới mất hết vốn — điều gần như không thể xảy ra với một hệ thống có xác suất thắng hợp lý. Còn nếu risk 20%/lệnh, chỉ 5 lệnh thua là hết sạch.</p>
+
+      <figure style="margin: 0 0 36px 0;">
+        <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:8px;border:1px solid #e5e5e5;background:#fbfbf9">
+          <text x="380" y="30" font-size="14" fill="#1a1a1a" font-family="Arial" font-weight="bold" text-anchor="middle">SAU 10 LỆNH THUA LIÊN TIẾP — tài khoản còn lại</text>
+          <!-- risk 1% bar -->
+          <text x="20" y="86" font-size="13" fill="#15803d" font-family="Arial" font-weight="bold">Risk 1%</text>
+          <rect x="120" y="70" width="600" height="28" fill="#e5e7eb"/>
+          <rect x="120" y="70" width="543" height="28" fill="#16a34a"/>
+          <text x="675" y="90" font-size="12" fill="#15803d" font-family="Arial" font-weight="bold">còn 90%</text>
+          <!-- risk 5% bar -->
+          <text x="20" y="146" font-size="13" fill="#b45309" font-family="Arial" font-weight="bold">Risk 5%</text>
+          <rect x="120" y="130" width="600" height="28" fill="#e5e7eb"/>
+          <rect x="120" y="130" width="359" height="28" fill="#f59e0b"/>
+          <text x="490" y="150" font-size="12" fill="#b45309" font-family="Arial" font-weight="bold">còn 60%</text>
+          <!-- risk 20% bar -->
+          <text x="20" y="206" font-size="13" fill="#e2231a" font-family="Arial" font-weight="bold">Risk 20%</text>
+          <rect x="120" y="190" width="600" height="28" fill="#e5e7eb"/>
+          <rect x="120" y="190" width="64" height="28" fill="#e2231a"/>
+          <text x="196" y="210" font-size="12" fill="#e2231a" font-family="Arial" font-weight="bold">còn ~11% 💀</text>
+        </svg>
+        <figcaption style="font-size: 14px; color: #777; font-style: italic; margin-top: 10px; text-align: center;">Cùng chuỗi 10 lệnh thua: risk 1% gần như không hề hấn (còn 90%), trong khi risk 20% gần như xóa sổ tài khoản. Quản trị vốn chính là sự sống còn.</figcaption>
+      </figure>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Tỷ lệ Risk:Reward — bí mật của lợi nhuận dài hạn</h2>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Điều kỳ diệu: bạn <strong>không cần thắng nhiều lệnh để kiếm tiền</strong>. Nếu mỗi lệnh bạn risk 1 phần để kiếm 2 phần (tỷ lệ R:R = 1:2), thì chỉ cần thắng 40% số lệnh là đã có lãi. Đây là lý do trader chuyên nghiệp ám ảnh với R:R hơn là win rate.</p>
+
+      <figure style="margin: 0 0 36px 0;">
+        <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:8px;border:1px solid #e5e5e5;background:#fbfbf9">
+          <text x="380" y="30" font-size="14" fill="#1a1a1a" font-family="Arial" font-weight="bold" text-anchor="middle">VÍ DỤ R:R = 1:2 — chỉ cần thắng 4/10 lệnh</text>
+          <!-- losses -->
+          <g>
+            <rect x="60" y="120" width="40" height="40" fill="#e2231a" opacity="0.8"/>
+            <rect x="110" y="120" width="40" height="40" fill="#e2231a" opacity="0.8"/>
+            <rect x="160" y="120" width="40" height="40" fill="#e2231a" opacity="0.8"/>
+            <rect x="210" y="120" width="40" height="40" fill="#e2231a" opacity="0.8"/>
+            <rect x="260" y="120" width="40" height="40" fill="#e2231a" opacity="0.8"/>
+            <rect x="310" y="120" width="40" height="40" fill="#e2231a" opacity="0.8"/>
+            <text x="205" y="185" font-size="13" fill="#e2231a" font-family="Arial" text-anchor="middle">6 lệnh thua × (-1) = -6</text>
+          </g>
+          <!-- wins -->
+          <g>
+            <rect x="400" y="80" width="40" height="80" fill="#16a34a" opacity="0.85"/>
+            <rect x="450" y="80" width="40" height="80" fill="#16a34a" opacity="0.85"/>
+            <rect x="500" y="80" width="40" height="80" fill="#16a34a" opacity="0.85"/>
+            <rect x="550" y="80" width="40" height="80" fill="#16a34a" opacity="0.85"/>
+            <text x="495" y="185" font-size="13" fill="#15803d" font-family="Arial" text-anchor="middle">4 lệnh thắng × (+2) = +8</text>
+          </g>
+          <text x="660" y="125" font-size="22" fill="#15803d" font-family="Arial" font-weight="bold" text-anchor="middle">= +2</text>
+          <text x="660" y="150" font-size="12" fill="#777" font-family="Arial" text-anchor="middle">LÃI ròng</text>
+        </svg>
+        <figcaption style="font-size: 14px; color: #777; font-style: italic; margin-top: 10px; text-align: center;">Thua 6 lệnh, thắng chỉ 4 lệnh — nhưng nhờ R:R = 1:2, tài khoản vẫn lãi. Tỷ lệ R:R tốt quan trọng hơn việc thắng nhiều.</figcaption>
+      </figure>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Hiểu về Drawdown: vì sao phòng thủ quan trọng hơn tấn công</h2>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">Một sự thật đau lòng nhiều người mới không biết: <strong>mất 50% tài khoản thì phải lãi 100% mới hòa vốn</strong>. Thua càng sâu, đường về càng dốc. Đó là lý do bảo toàn vốn (giữ drawdown thấp) luôn ưu tiên hơn việc cố ăn lớn.</p>
+
+      <figure style="margin: 0 0 28px 0;">
+        <svg viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:8px;border:1px solid #e5e5e5;background:#fbfbf9">
+          <text x="380" y="30" font-size="14" fill="#1a1a1a" font-family="Arial" font-weight="bold" text-anchor="middle">MẤT BAO NHIÊU → CẦN LÃI BAO NHIÊU ĐỂ HÒA VỐN</text>
+          <g font-family="Arial" font-size="13">
+            <text x="120" y="80" fill="#777" text-anchor="end">Mất 10%</text>
+            <rect x="140" y="68" width="60" height="18" fill="#16a34a" opacity="0.7"/><text x="210" y="82" fill="#15803d">cần +11%</text>
+            <text x="120" y="115" fill="#777" text-anchor="end">Mất 25%</text>
+            <rect x="140" y="103" width="120" height="18" fill="#f59e0b" opacity="0.7"/><text x="270" y="117" fill="#b45309">cần +33%</text>
+            <text x="120" y="150" fill="#777" text-anchor="end">Mất 50%</text>
+            <rect x="140" y="138" width="300" height="18" fill="#e2231a" opacity="0.7"/><text x="450" y="152" fill="#e2231a">cần +100%</text>
+            <text x="120" y="185" fill="#777" text-anchor="end">Mất 75%</text>
+            <rect x="140" y="173" width="500" height="18" fill="#991b1b"/><text x="650" y="187" fill="#991b1b" font-weight="bold">cần +300% 💀</text>
+          </g>
+        </svg>
+        <figcaption style="font-size: 14px; color: #777; font-style: italic; margin-top: 10px; text-align: center;">Thua lỗ càng lớn, con đường hồi phục càng khắc nghiệt theo cấp số nhân. Giữ tài khoản an toàn quan trọng hơn mọi cú "ăn đậm".</figcaption>
+      </figure>
+
+      <h2 style="font-size: 24px; font-weight: 700; margin-top: 44px; margin-bottom: 18px;">Kết quả khi áp dụng quản trị vốn kỷ luật</h2>
+
+      <p style="font-size: 18px; margin-bottom: 28px;">Hai trader cùng vốn $1.000, cùng tỷ lệ thắng 50%, giao dịch 100 lệnh. Người A risk 1%/lệnh với R:R 1:2; người B "tất tay" 20%/lệnh. Sau 100 lệnh: người A tăng trưởng đều và còn sống, người B đã cháy tài khoản từ giữa chặng vì một chuỗi thua. Quản trị vốn không làm bạn giàu nhanh — nó làm bạn <strong>không bao giờ bị loại khỏi cuộc chơi</strong>, và đó mới là điều kiện để làm giàu.</p>
+
+      <p style="font-size: 18px; background: #f7f5f0; border-left: 3px solid #1a1a1a; padding: 16px 20px; margin-bottom: 28px;">Quy tắc vàng: <strong>Bảo toàn vốn trước, lợi nhuận sau.</strong> Risk tối đa 1%/lệnh, luôn có R:R ≥ 1:2, và không bao giờ "tất tay". Người sống sót lâu nhất là người thắng cuối cùng.</p>
+
+      <div style="background:#0a1120;border-radius:14px;padding:24px;text-align:center;margin-bottom:8px">
+        <p style="color:#cbd5e6;font-size:16px;margin-bottom:14px;font-family:Inter,sans-serif">Nhận template quản trị vốn & tính khối lượng lệnh miễn phí?</p>
+        <a href="https://zalo.me/g/umygtg111" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(95deg,#2563eb,#3b82f6);color:#fff;font-weight:700;padding:13px 30px;border-radius:40px;text-decoration:none;font-family:Inter,sans-serif">📩 Tham gia đào tạo Live cùng Masterfx.vn</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- FLOATING -->
 <div class="float">
   <a href="tel:0989994556" class="phone" title="Gọi 0989.994.556"><i class="fas fa-phone-alt"></i></a>
@@ -597,6 +963,12 @@ async function handleForm(form,box,kind){
 }
 const lf=document.getElementById('leadForm');if(lf)lf.addEventListener('submit',e=>{e.preventDefault();handleForm(lf,document.getElementById('leadMsg'),'lead')});
 const rf=document.getElementById('reviewForm');if(rf)rf.addEventListener('submit',e=>{e.preventDefault();handleForm(rf,document.getElementById('reviewMsg'),'review')});
+
+// ===== ARTICLE MODAL =====
+function openArticle(id){const m=document.getElementById('art-'+id);if(m){m.classList.add('open');document.body.style.overflow='hidden';m.scrollTop=0}}
+function closeArticle(id){const m=document.getElementById('art-'+id);if(m){m.classList.remove('open');document.body.style.overflow=''}}
+document.querySelectorAll('.article-overlay').forEach(o=>{o.addEventListener('click',e=>{if(e.target===o){o.classList.remove('open');document.body.style.overflow=''}})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.article-overlay.open').forEach(o=>{o.classList.remove('open');document.body.style.overflow=''})});
 </script>
 </body>
 </html>

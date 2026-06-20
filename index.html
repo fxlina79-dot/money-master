@@ -134,7 +134,7 @@ header{position:sticky;top:16px;z-index:100;margin:16px auto 0;max-width:1320px;
 
 /* CARDS GRID */
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px}
-.blog-card{background:rgba(15,25,45,.7);backdrop-filter:blur(8px);border-radius:28px;border:1px solid rgba(59,130,246,.2);transition:.4s;overflow:hidden}
+.blog-card{background:rgba(15,25,45,.7);backdrop-filter:blur(8px);border-radius:28px;border:1px solid rgba(59,130,246,.2);transition:.4s;overflow:hidden;cursor:pointer;user-select:none}
 .blog-card:hover{transform:translateY(-10px) scale(1.01);border-color:var(--blue);box-shadow:0 22px 34px -12px rgba(0,0,0,.5)}
 .blog-card .inner{padding:28px}
 .blog-card i{color:var(--blue);font-size:1.9rem}
@@ -406,9 +406,9 @@ footer{background:#020617;margin-top:40px;padding:50px 0 30px;border-top:1px sol
     <div class="section-title" data-aos="fade-up">📘 Thư Viện Kiến Thức Thực Chiến</div>
     <div class="section-sub" data-aos="fade-up">Từ Price Action đến tâm lý giao dịch – dành riêng cho trader nghiêm túc</div>
     <div class="blog-grid">
-      <div class="blog-card" data-aos="fade-up" data-aos-delay="0"><div class="inner"><i class="fas fa-chart-simple"></i><h3>Supply &amp; Demand nâng cao</h3><p>Nhận diện vùng cung cầu với khối lượng giao dịch</p><a href="#" class="more" onclick="event.preventDefault();openArticle('supply-demand')">Đọc bài →</a></div></div>
-      <div class="blog-card" data-aos="fade-up" data-aos-delay="100"><div class="inner"><i class="fas fa-brain"></i><h3>Tâm lý giao dịch đỉnh cao</h3><p>Kiểm soát FOMO và giao dịch kỷ luật</p><a href="#" class="more" onclick="event.preventDefault();openArticle('tam-ly')">Đọc bài →</a></div></div>
-      <div class="blog-card" data-aos="fade-up" data-aos-delay="200"><div class="inner"><i class="fas fa-chart-line"></i><h3>Quản trị vốn chuyên nghiệp</h3><p>Công thức Kelly &amp; Risk 1% cho trader dài hạn</p><a href="#" class="more" onclick="event.preventDefault();openArticle('quan-tri-von')">Đọc bài →</a></div></div>
+      <div class="blog-card" data-aos="fade-up" data-aos-delay="0" onclick="openArticle('supply-demand')"><div class="inner"><i class="fas fa-chart-simple"></i><h3>Supply &amp; Demand nâng cao</h3><p>Nhận diện vùng cung cầu với khối lượng giao dịch</p><span class="more">Đọc bài →</span></div></div>
+      <div class="blog-card" data-aos="fade-up" data-aos-delay="100" onclick="openArticle('tam-ly')"><div class="inner"><i class="fas fa-brain"></i><h3>Tâm lý giao dịch đỉnh cao</h3><p>Kiểm soát FOMO và giao dịch kỷ luật</p><span class="more">Đọc bài →</span></div></div>
+      <div class="blog-card" data-aos="fade-up" data-aos-delay="200" onclick="openArticle('quan-tri-von')"><div class="inner"><i class="fas fa-chart-line"></i><h3>Quản trị vốn chuyên nghiệp</h3><p>Công thức Kelly &amp; Risk 1% cho trader dài hạn</p><span class="more">Đọc bài →</span></div></div>
     </div>
   </div>
 </section>
